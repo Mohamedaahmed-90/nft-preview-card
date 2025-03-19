@@ -1,0 +1,158 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Outfit;
+}
+@font-face {
+  font-family: Outfit;
+  src: url(./fonts/Outfit-VariableFont_wght.ttf);
+}
+:root {
+  --soft-blue: hsl(215, 51%, 70%);
+  --cyan: hsl(178, 100%, 50%);
+  --very-dark-blue-main-BG: hsl(217, 54%, 11%);
+  --very-dark-blue-card-BG: hsl(216, 50%, 16%);
+  --very-dark-blue-line: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-family: Outfit; /*300,400,600*/
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--very-dark-blue-main-BG);
+  font-family: "Outfit", sans-serif;
+  padding: 1.5rem;
+}
+
+/* NFT Card Container */
+.nft-card {
+  background: var(--very-dark-blue-card-BG);
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 350px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Container with Hover Effect */
+.nft-image {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.nft-image img {
+  width: 100%;
+  display: block;
+}
+
+/* [ ] add img overlay and icon over it >> use before & after  */
+.nft-image:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* BUG: if use , >> dosen't work */
+  /* background-color: rgb(159, 241, 159); */
+  /* background-color: rgb(1 241 159 / 0.5); */
+  background-color: hsla(178, 100%, 50%, 30%);
+}
+
+.nft-image:hover::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  /* BUG: if use , >> dosen't work */
+  background-image: url(./images/icon-view.svg);
+}
+/* Card Content Styling */
+.nft-title {
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.nft-description {
+  color: var(--soft-blue);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+/* Price and Time Section */
+.price-time {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  /* NOTE: add horizontal line to bottom of our div */
+  border-bottom: 1px solid var(--very-dark-blue-line);
+}
+
+/* [ ] deal on vertical level */
+.price,
+.time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.price {
+  color: var(--cyan);
+}
+
+.time {
+  color: var(--soft-blue);
+}
+
+/* Creator Section */
+.creator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.creator img {
+  width: 35px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+}
+
+.creator p {
+  color: var(--soft-blue);
+}
+
+.creator span {
+  color: var(--white);
+}
+
+/* Hover Effects */
+.nft-title:hover,
+.creator span:hover {
+  color: var(--cyan);
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .nft-card {
+    max-width: 400px;
+    padding: 2rem;
+  }
+
+  .nft-title {
+    font-size: 1.6rem;
+  }
+}
